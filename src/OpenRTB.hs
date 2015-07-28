@@ -1,6 +1,4 @@
-module Lib
-    ( someFunc
-    ) where
+module OpenRTB where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+import OpenRTB.BidRequest
+import OpenRTB.BidResponse
