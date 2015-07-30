@@ -5,6 +5,8 @@ import Data.Text
 import Data.Word
 
 import OpenRTB.BidRequest.Geo
+import OpenRTB.Enum.ConnectionType
+import OpenRTB.Enum.DeviceType
 
 -- | This object provides information pertaining to the device through which the
 --   user is interacting. Device information includes its hardware, platform,
@@ -35,7 +37,7 @@ data Device = Device
   , ipV6 :: Maybe Text
 
     -- | The general type of device. Refer to List 5.17.
-  , deviceType :: Maybe ()
+  , deviceType :: Maybe DeviceType
 
     -- | Device make (e.g., "Apple").
   , make :: Maybe Text
@@ -78,7 +80,7 @@ data Device = Device
   , carrier :: Maybe Text
 
     -- | Network connection type. Refer to List 5.18.
-  , connectionType :: Maybe ()
+  , connectionType :: Maybe ConnectionType
 
     -- | ID sanctioned for advertiser use in the clear (i.e., not hashed).
   , ifA :: Maybe Text

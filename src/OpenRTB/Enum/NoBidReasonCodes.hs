@@ -1,4 +1,9 @@
-module OpenRTB.Enum.NumBidReasonCodes where
+{-# LANGUAGE OverloadedStrings #-}
+module OpenRTB.Enum.NoBidReasonCodes where
+
+import Control.Monad
+import Data.Aeson
+import Data.Scientific
 
 -- | The following table lists the options for a bidder to signal the exchange
 --   as to why it did not offer a bid for the impression.

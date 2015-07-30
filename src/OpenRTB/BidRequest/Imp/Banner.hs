@@ -7,6 +7,12 @@ import Data.Aeson
 import Data.Text
 import Data.Word
 
+import OpenRTB.Enum.AdPosition
+import OpenRTB.Enum.APIFrameworks
+import OpenRTB.Enum.BannerAdTypes
+import OpenRTB.Enum.CreativeAttributes
+import OpenRTB.Enum.ExpandableDirection
+
 -- | This object represents the most general type of impression. Although the
 --   term "banner" may have very specific meaning in other contexts, here it can
 --   be many things including a simple static image, an expandable ad unit, or
@@ -66,13 +72,13 @@ data Banner = Banner
   , id :: Maybe Text
 
     -- | Blocked banner ad types. Refer to List 5.2.
-  , bType :: [()]
+  , bType :: [BannerAdType]
 
     -- | Blocked creative attributes. Refer to List 5.3.
-  , bAttr :: [()]
+  , bAttr :: [CreativeAttribute]
 
     -- | Ad position on Screen. Refer to List 5.4.
-  , pos :: Maybe ()
+  , pos :: Maybe AdPosition
 
     -- | Content MIME types supported. Popular MIME types may include
     --   "application/x-shockwave-flash", "image/jpg", "image/gif".
@@ -83,12 +89,12 @@ data Banner = Banner
   , topFrame :: Maybe Bool
 
     -- | Directions in which the baner may expand. Refer to List 5.5.
-  , expDir :: Maybe [()]
+  , expDir :: Maybe [ExpandableDirection]
 
     -- | List of supported API frameworks for this impression. Refer to List
     --   5.6. If an API is not explicitly listed, it is assumed not to be
     --   supported.
-  , api :: [()]
+  , api :: [APIFramework]
 
     -- | Placeholder for exchange-specific extensions to OpenRTB.
   , ext :: Maybe Value

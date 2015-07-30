@@ -1,8 +1,8 @@
-module OpenRTB.Enum.CreativeAtrtibutes where
+module OpenRTB.Enum.CreativeAttributes where
 
 -- | The collowing table specifies a standard list of creative attributes that
 --   can describe an ad being served or serve as restrictions of thereof.
-data CreativeAttributes =
+data CreativeAttribute =
     -- | Audio Ad (Auto-Play)
     AudioAdAutoPlay
 

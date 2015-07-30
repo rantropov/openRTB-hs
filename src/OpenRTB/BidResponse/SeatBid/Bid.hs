@@ -6,6 +6,8 @@ import Data.Aeson
 import Data.Text
 import Data.Word
 
+import OpenRTB.Enum.CreativeAttributes
+
 -- | A `SeatBid` object contains one or more `Bid` objects, each of which
 --   relates to a specific impression in the bid request via the `impID`
 --   attribute and constitutes an offer to buy that impression for a given
@@ -59,7 +61,7 @@ data Bid = Bid
   , cat :: Maybe [()]
 
     -- | Set of attributes describing the creative. Refer to List 5.3.
-  , attr :: Maybe [()]
+  , attr :: Maybe [CreativeAttribute]
 
     -- | Reference to the `Deal.id` from the bid request if this bid pertains
     --   to a private marketplace direct deal.

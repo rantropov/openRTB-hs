@@ -6,6 +6,15 @@ import Data.Text
 import Data.Word
 
 import OpenRTB.BidRequest.Imp.Banner
+import OpenRTB.Enum.VideoBidResponseProtocols
+import OpenRTB.Enum.VideoStartDelay
+import OpenRTB.Enum.VideoLinearity
+import OpenRTB.Enum.CreativeAttributes
+import OpenRTB.Enum.VideoPlaybackMethods
+import OpenRTB.Enum.ContentDeliveryMethods
+import OpenRTB.Enum.AdPosition
+import OpenRTB.Enum.APIFrameworks
+import OpenRTB.Enum.VASTCompanionTypes
 
 -- | This object represents an in-stream video impression. Many of the fields
 --   are non-essential for minimally viable transactions, but are included to
@@ -37,12 +46,12 @@ data Video = Video
     --   Supported video bid response protocol. Refer to List 5.8. At least one
     --   supported protocol must be specified in either the `protocol` or
     --   `protocols` attribute.
-  , protocol :: Maybe ()
+  , protocol :: Maybe VideoBidResponseProtocol
 
     -- | Array of supported video bid response protocols. Refer to List 5.8. At
     --   least one supported protocol must be specified in either the `protocol`
     --   or `protocols` attribute.
-  , protocols :: Maybe [()]
+  , protocols :: Maybe [VideoBidResponseProtocol]
 
     -- | Width of the video player in pixels.
   , w :: Maybe Word16
@@ -53,11 +62,11 @@ data Video = Video
     -- | Indicates the start delay in seconds for pre-roll, mid-roll, or
     --   post-roll ad placements. Refer to List 5.10 for additional generic
     --   values.
-  , startDelay :: Maybe ()
+  , startDelay :: Maybe VideoStartDelay
 
     -- | Indicates if the impression must be linear, nonlinear, etc. If none
     --   specified, assume all are allowed. Refer to List 5.7.
-  , linearity :: Maybe ()
+  , linearity :: Maybe VideoLinearity
 
     -- | If multiple ad impressions are offered in the same bid request, the
     --   sequence number will allow for the coordinated delivery of multiple
@@ -65,14 +74,14 @@ data Video = Video
   , sequence :: Maybe Word8
 
     -- | Blocked creative attributes. Refer to List 5.3.
-  , bAttr :: [()]
+  , bAttr :: [CreativeAttribute]
 
     -- | Maximum extended video ad duration if extension is allowed. If blank
     --   or 0, extension is not allowed, if -1, the extension is allowed, and
     --   there is no time limit imposed. If greather than 0, then the value
     --   represents the number of seconds of extended play supported beyond
     --   the `maxDuration` value.
-  , maxExtended :: ()
+  , maxExtended :: MaxExtended
 
     -- | Minimum bit rate in Kbps. Exchange may set this dynamically or
     --   universally across their set of publishers.
@@ -88,14 +97,14 @@ data Video = Video
 
     -- | Allowed playback methods. If none specified, assume all are allowed.
     --   Refer to List 5.9.
-  , playbackMethod :: Maybe [()]
+  , playbackMethod :: Maybe [VideoPlaybackMethod]
 
     -- | Supported delivery methods (e.g., streaming, progressive). If none
     --   specified, assume all are supported. Refer to list 5.13.
-  , delivery :: [()]
+  , delivery :: [ContentDeliveryMethod]
 
     -- | Ad position on screen. Refer to List 5.4.
-  , pos :: Maybe ()
+  , pos :: Maybe AdPosition
 
     -- | Array of `Banner` objects (Section 3.2.3. if companion ads are
     --   available.
@@ -104,12 +113,17 @@ data Video = Video
     -- | List of supported API frameworks for this impression. Refer to List
     --   5.6. If an API is not explicitly listed, it is assumed not to be
     --   supported.
-  , api :: [()]
+  , api :: [APIFramework]
 
     -- | Supported VAST companion ad types. Refer to List 5.12. Recommended if
     --   companion `Banner` objects are included via the `companionAd` array.
-  , companionType :: Maybe [()]
+  , companionType :: Maybe [VASTCompanionType]
 
     -- | Placeholder for exchange-specific extensions to OpenRTB.
   , ext :: Maybe Value
   }
+
+data MaxExtended =
+    Unlimited
+  | NotAllowed
+  | Allowed Integer

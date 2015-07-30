@@ -6,7 +6,7 @@ module OpenRTB.Enum.APIFrameworks where
 --   MRAID-2 features and as such the only safe interpretation of value "3"
 --   is MRAID-1. In OpenRTB 2.2, this was made explicit and MRAID-2 has been
 --   added as value "5".
-data APIFrameworks =
+data APIFramework =
     VPAID10
 
   | VPAID20

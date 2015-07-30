@@ -7,6 +7,9 @@ import Data.Text
 import Data.Word
 
 import OpenRTB.BidRequest.DistributionChannel.Content.Producer
+import OpenRTB.Enum.ContentContext
+import OpenRTB.Enum.QAGMediaRatings
+import OpenRTB.Enum.VideoQuality
 
 -- | This object describes the content in which the impression will appear,
 --   which may be syndicated or non-syndicated content. This object may be
@@ -46,10 +49,10 @@ data Content = Content
   , cat :: Maybe [()]
 
     -- | video quality per IAB's classification. Refer to List 5.1.
-  , videoQuality :: Maybe ()
+  , videoQuality :: Maybe VideoQuality
 
     -- | Type of content (game, video, text, etc.). Refer to List 5.14
-  , context :: Maybe ()
+  , context :: Maybe ContentContext
 
     -- | Content rating (e.g., MPAA).
   , contentRating :: Maybe Text
@@ -58,7 +61,7 @@ data Content = Content
   , userRating :: Maybe Text
 
     -- | Media rating per QAG guidelines. Refer to List 5.15.
-  , qagMediaRating :: Maybe ()
+  , qagMediaRating :: Maybe QAGMediaRating
 
     -- | Comma separated list of keywords describing the content.
   , keywords :: Maybe Text

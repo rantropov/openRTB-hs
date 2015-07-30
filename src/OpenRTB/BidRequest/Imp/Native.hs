@@ -3,6 +3,9 @@ module OpenRTB.BidRequest.Imp.Native where
 import Data.Aeson
 import Data.Text
 
+import OpenRTB.Enum.APIFrameworks
+import OpenRTB.Enum.CreativeAttributes
+
 -- | The object represents a native type impression. Native ad units are
 --   intended to blend seamlessly into the surrounding content (e.g., a
 --   sponsored Twitter or Facebook post). As such, the response must be
@@ -35,10 +38,10 @@ data Native = Native
     -- | List of supported API frameworks for this impression. Refer to List
     --   5.6. If an API is not explicitly listed, it is assumed not to be
     --   supported.
-  , api :: [()]
+  , api :: [APIFramework]
 
     -- | Blocked creative attributes. Refer to List 5.3.
-  , bAttr :: [()]
+  , bAttr :: [CreativeAttribute]
 
     -- | Placeholder for exchange-specific extensions to OpenRTB.
   , ext :: Maybe Value

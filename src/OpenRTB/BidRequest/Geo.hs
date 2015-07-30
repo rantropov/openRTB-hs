@@ -4,6 +4,8 @@ import Data.Aeson
 import Data.Text
 import Data.Word
 
+import OpenRTB.Enum.LocationType
+
 -- | This object encapsulates various methods for specifying a geographic
 --   location. When subordinate to a `Device` object, it indicates the location
 --   of the device which can also be interpreted as the user's current location.
@@ -23,7 +25,7 @@ data Geo = Geo
 
     -- | Source of location data; recommended when passing `lat`/`lon`. Refer
     --   to List 5.16.
-  , source :: Maybe ()
+  , source :: Maybe LocationType
 
     -- | Country code using ISO-3166-1-alpha-3.
   , country :: Maybe Text

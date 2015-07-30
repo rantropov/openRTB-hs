@@ -2,7 +2,7 @@ module OpenRTB.Enum.VideoBidResponseProtocols where
 
 -- | The following table lists the options for video bid response protocols
 --   that could be supported by an exchange.
-data VideoBidResponseProtocols =
+data VideoBidResponseProtocol =
     -- | Vast 1.0
     Vast10
 
