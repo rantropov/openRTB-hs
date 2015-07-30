@@ -34,3 +34,14 @@ data NoBidReasonCode =
 
     -- | Unmatched User
   | UnmatchedUser
+  deriving (Enum, Show, Eq)
+
+instance FromJSON NoBidReasonCode where
+  -- try floatingOrInteger
+  parseJSON (Number i) =
+    case floatingOrInteger i of
+      Right n | 0 <= n && n < length [Unknown ..] -> return (toEnum n)
+      _ -> mzero
+
+instance ToJSON NoBidReasonCode where
+  toJSON nbrc = Number (scientific (fromIntegral $ fromEnum nbrc) 0)
