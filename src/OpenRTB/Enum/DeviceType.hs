@@ -1,5 +1,9 @@
 module OpenRTB.Enum.DeviceType where
 
+import Control.Monad
+import Data.Aeson
+import Data.Scientific
+
 -- | The following table lists the type of device from which the impression
 --   originated.
 --
@@ -45,3 +49,30 @@ data DeviceType =
     --
     --   Version 2.2
   | SetTopBox
+  deriving (Show, Eq)
+
+instance Enum DeviceType where
+  toEnum 1 = MobileTablet
+  toEnum 2 = PersonalComputer
+  toEnum 3 = ConnectedTV
+  toEnum 4 = Phone
+  toEnum 5 = Tablet
+  toEnum 6 = ConnectedDevice
+  toEnum 7 = SetTopBox
+
+  fromEnum MobileTablet = 1
+  fromEnum PersonalComputer = 2
+  fromEnum ConnectedTV = 3
+  fromEnum Phone = 4
+  fromEnum Tablet = 5
+  fromEnum ConnectedDevice = 6
+  fromEnum SetTopBox = 7
+
+instance FromJSON DeviceType where
+  parseJSON (Number i) =
+    case floatingOrInteger i of
+      Right n | 0 < n && n <= length [MobileTablet ..] -> return (toEnum n)
+      _ -> mzero
+
+instance ToJSON DeviceType where
+  toJSON dt = Number (scientific (fromIntegral $ fromEnum dt) 0)
