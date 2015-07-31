@@ -16,7 +16,7 @@ main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = describe "VASTCompanionTypes" $ do
+spec = describe "VASTCompanionType" $ do
   context "JSON" $ do
     it "should convert back and forth" $ property $ do
        \m -> (decode . encode) m == Just (m :: Mock)

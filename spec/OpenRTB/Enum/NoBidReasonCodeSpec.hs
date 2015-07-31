@@ -16,7 +16,7 @@ main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = describe "NoBidReasonCodes" $ do
+spec = describe "NoBidReasonCode" $ do
   context "JSON" $ do
     it "should convert back and forth" $ property $ do
        \m -> (decode . encode) m == Just (m :: Mock)
