@@ -31,9 +31,13 @@ spec = describe "ConnectionType" $ do
         decode "{\"ct\":4}" `shouldBe` (Just (Mock CN2G))
         decode "{\"ct\":6}" `shouldBe` (Just (Mock CN4G))
 
+      it "should fail when out of range" $ do
+        decode "{\"ct\":-1}" `shouldBe` (Nothing :: Maybe Mock)
+        decode "{\"ct\":7}" `shouldBe` (Nothing :: Maybe Mock)
+
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
 
 instance Arbitrary ConnectionType where
-  arbitrary = toEnum <$> choose (0, (length [Unknown ..]) - 1)
+  arbitrary = toEnum <$> choose (0, 6)

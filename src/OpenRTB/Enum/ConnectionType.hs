@@ -32,7 +32,7 @@ data ConnectionType =
 instance FromJSON ConnectionType where
   parseJSON (Number i) =
     case floatingOrInteger i of
-      Right n | 0 <= n && n < length [Unknown ..] -> return (toEnum n)
+      Right n | 0 <= n && n <= 6  -> return (toEnum n)
       _ -> mzero
 
 instance ToJSON ConnectionType where

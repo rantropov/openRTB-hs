@@ -40,7 +40,7 @@ instance FromJSON NoBidReasonCode where
   -- try floatingOrInteger
   parseJSON (Number i) =
     case floatingOrInteger i of
-      Right n | 0 <= n && n < length [Unknown ..] -> return (toEnum n)
+      Right n | 0 <= n && n <= 8 -> return (toEnum n)
       _ -> mzero
 
 instance ToJSON NoBidReasonCode where

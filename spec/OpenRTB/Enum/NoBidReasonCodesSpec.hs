@@ -31,9 +31,13 @@ spec = describe "NoBidReasonCodes" $ do
         decode "{\"nbrc\":1}" `shouldBe` (Just (Mock Technical))
         decode "{\"nbrc\":3}" `shouldBe` (Just (Mock Spider))
 
+      it "should fail when out of range" $ do
+        decode "{\"nbrc\":-1}" `shouldBe` (Nothing :: Maybe Mock)
+        decode "{\"nbrc\":9}" `shouldBe` (Nothing :: Maybe Mock)
+
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
 
 instance Arbitrary NoBidReasonCode where
-  arbitrary = toEnum <$> choose (0, (length [Unknown ..]) - 1)
+  arbitrary = toEnum <$> choose (0, 8)
