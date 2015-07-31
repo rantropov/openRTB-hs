@@ -1,5 +1,9 @@
 module OpenRTB.Enum.ContentContext where
 
+import Control.Monad
+import Data.Aeson
+import Data.Scientific
+
 -- | The following table lists the various options for indicating the type of
 --   content in which the impression will appear.
 --
@@ -32,3 +36,30 @@ data ContentContext =
 
     -- | Unknown
   | Unknown
+  deriving (Show, Eq)
+
+instance Enum ContentContext where
+  toEnum 1 = Video
+  toEnum 2 = Game
+  toEnum 3 = Music
+  toEnum 4 = Application
+  toEnum 5 = Text
+  toEnum 6 = Other
+  toEnum 7 = Unknown
+
+  fromEnum Video = 1
+  fromEnum Game = 2
+  fromEnum Music = 3
+  fromEnum Application = 4
+  fromEnum Text = 5
+  fromEnum Other = 6
+  fromEnum Unknown = 7
+
+instance FromJSON ContentContext where
+  parseJSON (Number i) =
+    case floatingOrInteger i of
+     Right n | 1 <= n && n <= 7 -> return (toEnum n)
+     _ -> mzero
+
+instance ToJSON ContentContext where
+  toJSON cc = Number (scientific (fromIntegral $ fromEnum cc) 0)
