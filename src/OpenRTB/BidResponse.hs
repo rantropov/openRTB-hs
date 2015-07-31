@@ -6,7 +6,7 @@ import Data.Aeson
 import Data.Text
 
 import OpenRTB.BidResponse.SeatBid
-import OpenRTB.Enum.NoBidReasonCodes
+import OpenRTB.Enum.NoBidReasonCode
 
 -- | This object is the top-level bid response object (i.e., the unnamed outer
 --   JSON object). the `id` is a reflection of the bid request ID for logging

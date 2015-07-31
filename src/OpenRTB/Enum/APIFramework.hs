@@ -1,4 +1,4 @@
-module OpenRTB.Enum.APIFrameworks where
+module OpenRTB.Enum.APIFramework where
 
 -- | The following table is a list of API frameworks supported by the publisher.
 --   Note that MRAID-1 is a subset of MRAID-2. In OpenRTB 2.1 and prior,

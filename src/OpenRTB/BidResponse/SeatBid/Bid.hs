@@ -6,7 +6,7 @@ import Data.Aeson
 import Data.Text
 import Data.Word
 
-import OpenRTB.Enum.CreativeAttributes
+import OpenRTB.Enum.CreativeAttribute
 
 -- | A `SeatBid` object contains one or more `Bid` objects, each of which
 --   relates to a specific impression in the bid request via the `impID`

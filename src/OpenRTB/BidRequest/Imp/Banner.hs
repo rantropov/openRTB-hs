@@ -8,9 +8,9 @@ import Data.Text
 import Data.Word
 
 import OpenRTB.Enum.AdPosition
-import OpenRTB.Enum.APIFrameworks
-import OpenRTB.Enum.BannerAdTypes
-import OpenRTB.Enum.CreativeAttributes
+import OpenRTB.Enum.APIFramework
+import OpenRTB.Enum.BannerAdType
+import OpenRTB.Enum.CreativeAttribute
 import OpenRTB.Enum.ExpandableDirection
 
 -- | This object represents the most general type of impression. Although the

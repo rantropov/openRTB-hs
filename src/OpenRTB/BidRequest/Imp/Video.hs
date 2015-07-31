@@ -6,15 +6,15 @@ import Data.Text
 import Data.Word
 
 import OpenRTB.BidRequest.Imp.Banner
-import OpenRTB.Enum.VideoBidResponseProtocols
+import OpenRTB.Enum.VideoBidResponseProtocol
 import OpenRTB.Enum.VideoStartDelay
 import OpenRTB.Enum.VideoLinearity
-import OpenRTB.Enum.CreativeAttributes
-import OpenRTB.Enum.VideoPlaybackMethods
-import OpenRTB.Enum.ContentDeliveryMethods
+import OpenRTB.Enum.CreativeAttribute
+import OpenRTB.Enum.VideoPlaybackMethod
+import OpenRTB.Enum.ContentDeliveryMethod
 import OpenRTB.Enum.AdPosition
-import OpenRTB.Enum.APIFrameworks
-import OpenRTB.Enum.VASTCompanionTypes
+import OpenRTB.Enum.APIFramework
+import OpenRTB.Enum.VASTCompanionType
 
 -- | This object represents an in-stream video impression. Many of the fields
 --   are non-essential for minimally viable transactions, but are included to

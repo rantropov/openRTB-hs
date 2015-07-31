@@ -1,4 +1,4 @@
-module OpenRTB.Enum.CreativeAttributes where
+module OpenRTB.Enum.CreativeAttribute where
 
 -- | The collowing table specifies a standard list of creative attributes that
 --   can describe an ad being served or serve as restrictions of thereof.

@@ -37,21 +37,21 @@ library
                      , OpenRTB.BidResponse.SeatBid
                      , OpenRTB.BidResponse
                      , OpenRTB.Enum.AdPosition
-                     , OpenRTB.Enum.APIFrameworks
-                     , OpenRTB.Enum.BannerAdTypes
+                     , OpenRTB.Enum.APIFramework
+                     , OpenRTB.Enum.BannerAdType
                      , OpenRTB.Enum.ConnectionType
                      , OpenRTB.Enum.ContentContext
-                     , OpenRTB.Enum.ContentDeliveryMethods
-                     , OpenRTB.Enum.CreativeAttributes
+                     , OpenRTB.Enum.ContentDeliveryMethod
+                     , OpenRTB.Enum.CreativeAttribute
                      , OpenRTB.Enum.DeviceType
                      , OpenRTB.Enum.ExpandableDirection
                      , OpenRTB.Enum.LocationType
-                     , OpenRTB.Enum.NoBidReasonCodes
-                     , OpenRTB.Enum.QAGMediaRatings
-                     , OpenRTB.Enum.VASTCompanionTypes
-                     , OpenRTB.Enum.VideoBidResponseProtocols
+                     , OpenRTB.Enum.NoBidReasonCode
+                     , OpenRTB.Enum.QAGMediaRating
+                     , OpenRTB.Enum.VASTCompanionType
+                     , OpenRTB.Enum.VideoBidResponseProtocol
                      , OpenRTB.Enum.VideoLinearity
-                     , OpenRTB.Enum.VideoPlaybackMethods
+                     , OpenRTB.Enum.VideoPlaybackMethod
                      , OpenRTB.Enum.VideoQuality
                      , OpenRTB.Enum.VideoStartDelay
 

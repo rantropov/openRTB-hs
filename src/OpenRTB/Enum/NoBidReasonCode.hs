@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module OpenRTB.Enum.NoBidReasonCodes where
+module OpenRTB.Enum.NoBidReasonCode where
 
 import Control.Monad
 import Data.Aeson

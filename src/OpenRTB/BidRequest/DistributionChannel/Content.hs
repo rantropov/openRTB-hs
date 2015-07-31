@@ -8,7 +8,7 @@ import Data.Word
 
 import OpenRTB.BidRequest.DistributionChannel.Content.Producer
 import OpenRTB.Enum.ContentContext
-import OpenRTB.Enum.QAGMediaRatings
+import OpenRTB.Enum.QAGMediaRating
 import OpenRTB.Enum.VideoQuality
 
 -- | This object describes the content in which the impression will appear,

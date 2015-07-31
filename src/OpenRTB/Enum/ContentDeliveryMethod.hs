@@ -1,4 +1,4 @@
-module OpenRTB.Enum.ContentDeliveryMethods where
+module OpenRTB.Enum.ContentDeliveryMethod where
 
 import Control.Monad
 import Data.Aeson

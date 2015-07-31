@@ -1,4 +1,4 @@
-module OpenRTB.Enum.VideoPlaybackMethods where
+module OpenRTB.Enum.VideoPlaybackMethod where
 
 -- | The following table lists the various video playback methods.
 data VideoPlaybackMethod =

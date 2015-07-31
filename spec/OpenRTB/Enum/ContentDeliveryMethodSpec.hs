@@ -7,7 +7,7 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
-import OpenRTB.Enum.ContentDeliveryMethods
+import OpenRTB.Enum.ContentDeliveryMethod
 
 data Mock = Mock { cdm :: ContentDeliveryMethod } deriving (Eq, Show)
 $(deriveJSON defaultOptions ''Mock)

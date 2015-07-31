@@ -1,13 +1,13 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell #-}
-module OpenRTB.Enum.NoBidReasonCodesSpec where
+module OpenRTB.Enum.NoBidReasonCodeSpec where
 
 import Control.Applicative
 import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
-import OpenRTB.Enum.NoBidReasonCodes
+import OpenRTB.Enum.NoBidReasonCode
 
 data Mock = Mock { nbrc :: NoBidReasonCode } deriving (Eq, Show)
 $(deriveJSON defaultOptions ''Mock)

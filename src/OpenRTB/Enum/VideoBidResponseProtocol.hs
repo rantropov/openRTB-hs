@@ -1,4 +1,4 @@
-module OpenRTB.Enum.VideoBidResponseProtocols where
+module OpenRTB.Enum.VideoBidResponseProtocol where
 
 -- | The following table lists the options for video bid response protocols
 --   that could be supported by an exchange.

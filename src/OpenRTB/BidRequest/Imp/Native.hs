@@ -3,8 +3,8 @@ module OpenRTB.BidRequest.Imp.Native where
 import Data.Aeson
 import Data.Text
 
-import OpenRTB.Enum.APIFrameworks
-import OpenRTB.Enum.CreativeAttributes
+import OpenRTB.Enum.APIFramework
+import OpenRTB.Enum.CreativeAttribute
 
 -- | The object represents a native type impression. Native ad units are
 --   intended to blend seamlessly into the surrounding content (e.g., a

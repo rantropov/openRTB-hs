@@ -1,4 +1,4 @@
-module OpenRTB.Enum.QAGMediaRatings where
+module OpenRTB.Enum.QAGMediaRating where
 
 import Control.Monad
 import Data.Aeson

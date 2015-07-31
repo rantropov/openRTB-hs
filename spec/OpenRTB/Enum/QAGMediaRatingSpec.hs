@@ -1,13 +1,13 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell #-}
-module OpenRTB.Enum.QAGMediaRatingsSpec where
+module OpenRTB.Enum.QAGMediaRatingSpec where
 
 import Control.Applicative
 import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
-import OpenRTB.Enum.QAGMediaRatings
+import OpenRTB.Enum.QAGMediaRating
 
 data Mock = Mock { qag :: QAGMediaRating } deriving (Eq, Show)
 $(deriveJSON defaultOptions ''Mock)

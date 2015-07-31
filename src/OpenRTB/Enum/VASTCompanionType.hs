@@ -1,4 +1,4 @@
-module OpenRTB.Enum.VASTCompanionTypes where
+module OpenRTB.Enum.VASTCompanionType where
 
 -- | The following table lists the options to indicate markup types allowed for
 --   video companion ads. This table is derived from IAB VAST 2.0+. Refer
