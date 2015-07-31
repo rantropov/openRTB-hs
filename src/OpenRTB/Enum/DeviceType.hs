@@ -71,7 +71,7 @@ instance Enum DeviceType where
 instance FromJSON DeviceType where
   parseJSON (Number i) =
     case floatingOrInteger i of
-      Right n | 0 < n && n <= length [MobileTablet ..] -> return (toEnum n)
+      Right n | 0 < n && n <= 7 -> return (toEnum n)
       _ -> mzero
 
 instance ToJSON DeviceType where

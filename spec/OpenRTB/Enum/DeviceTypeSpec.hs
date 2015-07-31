@@ -16,7 +16,7 @@ main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = describe "ConnectionType" $ do
+spec = describe "DeviceType" $ do
   context "JSON" $ do
     it "should convert back and forth" $ property $ do
       \m -> (decode . encode) m == Just (m :: Mock)
@@ -31,9 +31,13 @@ spec = describe "ConnectionType" $ do
         decode "{\"dt\":3}" `shouldBe` (Just (Mock ConnectedTV))
         decode "{\"dt\":7}" `shouldBe` (Just (Mock SetTopBox))
 
+      it "should fail when out of range" $ do
+        decode "{\"dt\":0}" `shouldBe` (Nothing :: Maybe Mock)
+        decode "{\"dt\":8}" `shouldBe` (Nothing :: Maybe Mock)
+
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
 
 instance Arbitrary DeviceType where
-  arbitrary = toEnum <$> choose (1, length [MobileTablet ..])
+  arbitrary = toEnum <$> choose (1, 7)
