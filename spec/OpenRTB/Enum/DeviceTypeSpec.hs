@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.DeviceType
 
 data Mock = Mock { dt :: DeviceType } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "DeviceType" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary DeviceType where
-  arbitrary = toEnum <$> choose (1, 7)

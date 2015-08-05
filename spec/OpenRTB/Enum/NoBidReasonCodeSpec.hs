@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.NoBidReasonCode
 
 data Mock = Mock { nbrc :: NoBidReasonCode } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "NoBidReasonCode" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary NoBidReasonCode where
-  arbitrary = toEnum <$> choose (0, 8)

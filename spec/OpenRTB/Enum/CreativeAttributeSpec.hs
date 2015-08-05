@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.CreativeAttribute
 
 data Mock = Mock { ca :: CreativeAttribute } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "CreativeAttributes" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary CreativeAttribute where
-  arbitrary = toEnum <$> choose (1, 16)

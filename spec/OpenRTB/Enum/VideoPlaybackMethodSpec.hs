@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.VideoPlaybackMethod
 
 data Mock = Mock { vpm :: VideoPlaybackMethod } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "VideoPlaybackMethod" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary VideoPlaybackMethod where
-  arbitrary = toEnum <$> choose (1, 4)

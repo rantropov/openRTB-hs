@@ -1,8 +1,12 @@
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell #-}
 module OpenRTB.BidResponse.SeatBid.Bid where
 
 import Prelude hiding (id)
 
 import Data.Aeson
+import Data.Aeson.TH
+import Data.Char
 import Data.Text
 import Data.Word
 
@@ -75,4 +79,9 @@ data Bid = Bid
 
     -- | Placeholder for bidder-specific extensions to OpenRTB.
   , ext :: Maybe Value
-  }
+  } deriving (Show, Eq)
+$(deriveJSON (defaultOptions
+              { omitNothingFields = True
+              , fieldLabelModifier = Prelude.map Data.Char.toLower
+              })
+  ''Bid)

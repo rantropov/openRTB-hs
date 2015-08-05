@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell #-}
-module OpenRTB.Enum.VideoStartDelaySpec where
+module OpenRTB.Enum.BannerAdTypeSpec where
 
 import Control.Applicative
 import Data.Aeson
@@ -9,32 +9,33 @@ import Test.Hspec
 import Test.QuickCheck
 
 import Test.Instances
-import OpenRTB.Enum.VideoStartDelay
+import OpenRTB.Enum.BannerAdType
 
-data Mock = Mock { vst :: VideoStartDelay } deriving (Eq, Show)
+data Mock = Mock { bat :: BannerAdType } deriving (Eq, Show)
 $(deriveJSON defaultOptions ''Mock)
 
 main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = describe "VideoStartDelay" $ do
+spec = describe "BannerAdTypes" $ do
   context "JSON" $ do
     it "should convert back and forth" $ property $ do
-       \m -> (decode . encode) m == Just (m :: Mock)
+      \m -> (decode . encode) m == Just (m :: Mock)
 
     context "ToJSON" $ do
       it "should properly encode a value" $ do
-        encode (Mock (MidRoll 1)) `shouldBe` "{\"vst\":1}"
-        encode (Mock GenericMidRoll) `shouldBe` "{\"vst\":-1}"
+        encode (Mock XHTMLTextAd) `shouldBe` "{\"bat\":1}"
+        encode (Mock IFrame) `shouldBe` "{\"bat\":4}"
 
     context "FromJSON" $ do
       it "should properly decode a value" $ do
-        decode "{\"vst\":60}" `shouldBe` (Just (Mock (MidRoll 60)))
-        decode "{\"vst\":0}" `shouldBe` (Just (Mock PreRoll))
+        decode "{\"bat\":3}" `shouldBe` (Just (Mock JavaScriptAd))
+        decode "{\"bat\":2}" `shouldBe` (Just (Mock XHTMLBannerAd))
 
       it "should fail when out of range" $ do
-        decode "{\"vst\":-3}" `shouldBe` (Nothing :: Maybe Mock)
+        decode "{\"bat\":0}" `shouldBe` (Nothing :: Maybe Mock)
+        decode "{\"bat\":17}" `shouldBe` (Nothing :: Maybe Mock)
 
 
 instance Arbitrary Mock where

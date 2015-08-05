@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.ContentDeliveryMethod
 
 data Mock = Mock { cdm :: ContentDeliveryMethod } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "ContentDeliveryMethod" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary ContentDeliveryMethod where
-  arbitrary = toEnum <$> choose (1, 2)

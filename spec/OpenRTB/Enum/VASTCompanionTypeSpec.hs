@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.VASTCompanionType
 
 data Mock = Mock { vct :: VASTCompanionType } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "VASTCompanionType" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary VASTCompanionType where
-  arbitrary = toEnum <$> choose (1, 3)

@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.APIFramework
 
 data Mock = Mock { api :: APIFramework } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "APIFramework" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary APIFramework where
-  arbitrary = toEnum <$> choose (1, 5)

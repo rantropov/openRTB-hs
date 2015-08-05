@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.ConnectionType
 
 data Mock = Mock { ct :: ConnectionType } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "ConnectionType" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary ConnectionType where
-  arbitrary = toEnum <$> choose (0, 6)

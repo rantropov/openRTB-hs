@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.ExpandableDirection as ED
 
 data Mock = Mock { ed :: ExpandableDirection } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "ExpandableDirection" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary ExpandableDirection where
-  arbitrary = toEnum <$> choose (1, 5)

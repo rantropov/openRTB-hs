@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.AdPosition
 
 data Mock = Mock { ap :: AdPosition } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "AdPosition" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary AdPosition where
-  arbitrary = toEnum <$> choose (0, 7)

@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.QAGMediaRating
 
 data Mock = Mock { qag :: QAGMediaRating } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "QAGMediaRating" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary QAGMediaRating where
-  arbitrary = toEnum <$> choose (1, 3)

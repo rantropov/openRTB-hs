@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.VideoBidResponseProtocol
 
 data Mock = Mock { vbrp :: VideoBidResponseProtocol } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "VideoBidResponseProtocol" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary VideoBidResponseProtocol where
-  arbitrary = toEnum <$> choose (1, 6)

@@ -7,6 +7,8 @@ import Data.Aeson
 import Data.Aeson.TH
 import Test.Hspec
 import Test.QuickCheck
+
+import Test.Instances
 import OpenRTB.Enum.VideoLinearity
 
 data Mock = Mock { vl :: VideoLinearity } deriving (Eq, Show)
@@ -38,6 +40,3 @@ spec = describe "VideoLinearity" $ do
 
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
-
-instance Arbitrary VideoLinearity where
-  arbitrary = toEnum <$> choose (1, 2)
