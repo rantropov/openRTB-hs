@@ -23,20 +23,5 @@ spec = describe "VideoBidResponseProtocol" $ do
     it "should convert back and forth" $ property $ do
       \m -> (decode . encode) m == Just (m :: Mock)
 
-    context "ToJSON" $ do
-      it "should properly encode a value" $ do
-        encode (Mock Vast10) `shouldBe` "{\"vbrp\":1}"
-        encode (Mock Vast30Wrapper) `shouldBe` "{\"vbrp\":6}"
-
-    context "FromJSON" $ do
-      it "should properly decode a value" $ do
-        decode "{\"vbrp\":3}" `shouldBe` (Just (Mock Vast30))
-        decode "{\"vbrp\":4}" `shouldBe` (Just (Mock Vast10Wrapper))
-
-      it "should fail when out of range" $ do
-        decode "{\"vbrp\":0}" `shouldBe` (Nothing :: Maybe Mock)
-        decode "{\"vbrp\":7}" `shouldBe` (Nothing :: Maybe Mock)
-
-
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary

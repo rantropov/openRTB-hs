@@ -23,20 +23,5 @@ spec = describe "VideoLinearity" $ do
     it "should convert back and forth" $ property $ do
       \m -> (decode . encode) m == Just (m :: Mock)
 
-    context "ToJSON" $ do
-      it "should properly encode a value" $ do
-        encode (Mock Linear) `shouldBe` "{\"vl\":1}"
-        encode (Mock NonLinear) `shouldBe` "{\"vl\":2}"
-
-    context "FromJSON" $ do
-      it "should properly decode a value" $ do
-        decode "{\"vl\":1}" `shouldBe` (Just (Mock Linear))
-        decode "{\"vl\":2}" `shouldBe` (Just (Mock NonLinear))
-
-      it "should fail when out of range" $ do
-        decode "{\"vl\":0}" `shouldBe` (Nothing :: Maybe Mock)
-        decode "{\"vl\":3}" `shouldBe` (Nothing :: Maybe Mock)
-
-
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary

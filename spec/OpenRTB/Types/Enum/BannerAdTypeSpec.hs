@@ -23,20 +23,5 @@ spec = describe "BannerAdTypes" $ do
     it "should convert back and forth" $ property $ do
       \m -> (decode . encode) m == Just (m :: Mock)
 
-    context "ToJSON" $ do
-      it "should properly encode a value" $ do
-        encode (Mock XHTMLTextAd) `shouldBe` "{\"bat\":1}"
-        encode (Mock IFrame) `shouldBe` "{\"bat\":4}"
-
-    context "FromJSON" $ do
-      it "should properly decode a value" $ do
-        decode "{\"bat\":3}" `shouldBe` (Just (Mock JavaScriptAd))
-        decode "{\"bat\":2}" `shouldBe` (Just (Mock XHTMLBannerAd))
-
-      it "should fail when out of range" $ do
-        decode "{\"bat\":0}" `shouldBe` (Nothing :: Maybe Mock)
-        decode "{\"bat\":17}" `shouldBe` (Nothing :: Maybe Mock)
-
-
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary

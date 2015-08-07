@@ -23,20 +23,5 @@ spec = describe "ContentDeliveryMethod" $ do
     it "should convert back and forth" $ property $ do
       \m -> (decode . encode) m == Just (m :: Mock)
 
-    context "ToJSON" $ do
-      it "should properly encode a value" $ do
-        encode (Mock Streaming) `shouldBe` "{\"cdm\":1}"
-        encode (Mock Progressive) `shouldBe` "{\"cdm\":2}"
-
-    context "FromJSON" $ do
-      it "should properly decode a value" $ do
-        decode "{\"cdm\":1}" `shouldBe` (Just (Mock Streaming))
-        decode "{\"cdm\":2}" `shouldBe` (Just (Mock Progressive))
-
-      it "should fail when out of range" $ do
-        decode "{\"cdm\":0}" `shouldBe` (Nothing :: Maybe Mock)
-        decode "{\"cdm\":3}" `shouldBe` (Nothing :: Maybe Mock)
-
-
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary

@@ -23,20 +23,5 @@ spec = describe "CreativeAttributes" $ do
     it "should convert back and forth" $ property $ do
       \m -> (decode . encode) m == Just (m :: Mock)
 
-    context "ToJSON" $ do
-      it "should properly encode a value" $ do
-        encode (Mock AudioAdAutoPlay) `shouldBe` "{\"ca\":1}"
-        encode (Mock InBannerVideoAdAutoPlay) `shouldBe` "{\"ca\":6}"
-
-    context "FromJSON" $ do
-      it "should properly decode a value" $ do
-        decode "{\"ca\":3}" `shouldBe` (Just (Mock ExpandableAuto))
-        decode "{\"ca\":2}" `shouldBe` (Just (Mock AudioAdUserInitiated))
-
-      it "should fail when out of range" $ do
-        decode "{\"ca\":0}" `shouldBe` (Nothing :: Maybe Mock)
-        decode "{\"ca\":17}" `shouldBe` (Nothing :: Maybe Mock)
-
-
 instance Arbitrary Mock where
   arbitrary = Mock <$> arbitrary
