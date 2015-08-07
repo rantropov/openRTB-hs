@@ -6,45 +6,48 @@ import Data.Scientific
 import qualified Data.Text as T
 import Test.QuickCheck
 
-import OpenRTB.BidRequest.App
-import OpenRTB.BidRequest.Device
-import OpenRTB.BidRequest.DistributionChannel.Content.Producer
-import OpenRTB.BidRequest.DistributionChannel.Content
-import OpenRTB.BidRequest.DistributionChannel.Publisher
-import OpenRTB.BidRequest.Geo
-import OpenRTB.BidRequest.Imp.Banner
-import OpenRTB.BidRequest.Imp.Native
-import OpenRTB.BidRequest.Imp.Pmp.Deal
-import OpenRTB.BidRequest.Imp.Pmp
-import OpenRTB.BidRequest.Imp.Video
-import OpenRTB.BidRequest.Imp
-import OpenRTB.BidRequest.Regs
-import OpenRTB.BidRequest.Site
-import OpenRTB.BidRequest.User.Data.Segment
-import OpenRTB.BidRequest.User.Data
-import OpenRTB.BidRequest.User
-import OpenRTB.BidRequest
-import OpenRTB.BidResponse.SeatBid.Bid
-import OpenRTB.BidResponse.SeatBid
-import OpenRTB.BidResponse
-import OpenRTB.Enum.AdPosition
-import OpenRTB.Enum.APIFramework
-import OpenRTB.Enum.BannerAdType
-import OpenRTB.Enum.ConnectionType
-import OpenRTB.Enum.ContentContext
-import OpenRTB.Enum.ContentDeliveryMethod
-import qualified OpenRTB.Enum.CreativeAttribute as CA
-import OpenRTB.Enum.DeviceType
-import OpenRTB.Enum.ExpandableDirection
-import OpenRTB.Enum.LocationType
-import OpenRTB.Enum.NoBidReasonCode
-import OpenRTB.Enum.QAGMediaRating
-import OpenRTB.Enum.VASTCompanionType
-import OpenRTB.Enum.VideoBidResponseProtocol
-import OpenRTB.Enum.VideoLinearity
-import OpenRTB.Enum.VideoPlaybackMethod
-import OpenRTB.Enum.VideoQuality
-import OpenRTB.Enum.VideoStartDelay
+import OpenRTB.Types.BidRequest.App
+import OpenRTB.Types.BidRequest.Device
+import OpenRTB.Types.BidRequest.DistributionChannel.Content.Producer
+import OpenRTB.Types.BidRequest.DistributionChannel.Content
+import OpenRTB.Types.BidRequest.DistributionChannel.Publisher
+import OpenRTB.Types.BidRequest.Geo
+import OpenRTB.Types.BidRequest.Imp.Banner
+import OpenRTB.Types.BidRequest.Imp.Native
+import OpenRTB.Types.BidRequest.Imp.Pmp.Deal
+import OpenRTB.Types.BidRequest.Imp.Pmp
+import OpenRTB.Types.BidRequest.Imp.Video
+import OpenRTB.Types.BidRequest.Imp
+import OpenRTB.Types.BidRequest.Regs
+import OpenRTB.Types.BidRequest.Site
+import OpenRTB.Types.BidRequest.User.Data.Segment
+import OpenRTB.Types.BidRequest.User.Data
+import OpenRTB.Types.BidRequest.User
+import OpenRTB.Types.BidRequest
+import OpenRTB.Types.BidResponse.SeatBid.Bid
+import OpenRTB.Types.BidResponse.SeatBid
+import OpenRTB.Types.BidResponse
+import OpenRTB.Types.Enum.AdPosition
+import OpenRTB.Types.Enum.APIFramework
+import OpenRTB.Types.Enum.BannerAdType
+import OpenRTB.Types.Enum.ConnectionType
+import OpenRTB.Types.Enum.ContentContext
+import OpenRTB.Types.Enum.ContentDeliveryMethod
+import qualified OpenRTB.Types.Enum.CreativeAttribute as CA
+import OpenRTB.Types.Enum.DeviceType
+import OpenRTB.Types.Enum.ExpandableDirection
+import OpenRTB.Types.Enum.LocationType
+import OpenRTB.Types.Enum.NoBidReasonCode
+import OpenRTB.Types.Enum.QAGMediaRating
+import OpenRTB.Types.Enum.VASTCompanionType
+import OpenRTB.Types.Enum.VideoBidResponseProtocol
+import OpenRTB.Types.Enum.VideoLinearity
+import OpenRTB.Types.Enum.VideoPlaybackMethod
+import OpenRTB.Types.Enum.VideoQuality
+import OpenRTB.Types.Enum.VideoStartDelay
+
+instance Arbitrary SeatBid where
+  arbitrary = SeatBid <$> arbitrary <*> maybeA <*> arbitrary <*> maybeA
 
 instance Arbitrary Bid where
   arbitrary = Bid <$> arbitrary <*> arbitrary <*> arbitrary <*> maybeA <*>

@@ -1,0 +1,83 @@
+name:                openRTB-types
+version:             0.1.0.0
+synopsis:            Haskell implementation of the OpenRTB spec
+description:         Please see README.md
+homepage:            http://github.com/ankhers/openRTB-hs
+license:             BSD3
+license-file:        LICENSE
+author:              Justin Wood
+maintainer:          justin.k.wood@gmail.com
+-- copyright:           
+category:            OpenRTB
+build-type:          Simple
+-- extra-source-files:  
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     OpenRTB.Types.BidRequest.App
+                     , OpenRTB.Types.BidRequest.Device
+                     , OpenRTB.Types.BidRequest.DistributionChannel.Content.Producer
+                     , OpenRTB.Types.BidRequest.DistributionChannel.Content
+                     , OpenRTB.Types.BidRequest.DistributionChannel.Publisher
+                     , OpenRTB.Types.BidRequest.Geo
+                     , OpenRTB.Types.BidRequest.Imp.Banner
+                     , OpenRTB.Types.BidRequest.Imp.Native
+                     , OpenRTB.Types.BidRequest.Imp.Pmp.Deal
+                     , OpenRTB.Types.BidRequest.Imp.Pmp
+                     , OpenRTB.Types.BidRequest.Imp.Video
+                     , OpenRTB.Types.BidRequest.Imp
+                     , OpenRTB.Types.BidRequest.Regs
+                     , OpenRTB.Types.BidRequest.Site
+                     , OpenRTB.Types.BidRequest.User.Data.Segment
+                     , OpenRTB.Types.BidRequest.User.Data
+                     , OpenRTB.Types.BidRequest.User
+                     , OpenRTB.Types.BidRequest
+                     , OpenRTB.Types.BidResponse.SeatBid.Bid
+                     , OpenRTB.Types.BidResponse.SeatBid
+                     , OpenRTB.Types.BidResponse
+                     , OpenRTB.Types.Enum.AdPosition
+                     , OpenRTB.Types.Enum.APIFramework
+                     , OpenRTB.Types.Enum.BannerAdType
+                     , OpenRTB.Types.Enum.ConnectionType
+                     , OpenRTB.Types.Enum.ContentContext
+                     , OpenRTB.Types.Enum.ContentDeliveryMethod
+                     , OpenRTB.Types.Enum.CreativeAttribute
+                     , OpenRTB.Types.Enum.DeviceType
+                     , OpenRTB.Types.Enum.ExpandableDirection
+                     , OpenRTB.Types.Enum.LocationType
+                     , OpenRTB.Types.Enum.NoBidReasonCode
+                     , OpenRTB.Types.Enum.QAGMediaRating
+                     , OpenRTB.Types.Enum.VASTCompanionType
+                     , OpenRTB.Types.Enum.VideoBidResponseProtocol
+                     , OpenRTB.Types.Enum.VideoLinearity
+                     , OpenRTB.Types.Enum.VideoPlaybackMethod
+                     , OpenRTB.Types.Enum.VideoQuality
+                     , OpenRTB.Types.Enum.VideoStartDelay
+
+  build-depends:       base >= 4.7 && < 5
+                     , aeson
+                     , text
+                     , scientific
+  default-language:    Haskell2010
+
+test-suite spec
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      spec
+  main-is:             Spec.hs
+  build-depends:       base
+                     , hspec
+                     , aeson
+                     , QuickCheck
+                     , text
+                     , bytestring
+                     , scientific
+                     , openRTB-types
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+  other-modules:       Test.Instances
+                     , Test.Helper
+
+source-repository head
+  type:     git
+  location: https://github.com/ankhers/openRTB-hs
